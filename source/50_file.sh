@@ -30,10 +30,10 @@ alias fs="stat -f '%z bytes'"
 alias df="df -h"
 
 # Recursively delete `.DS_Store` files
-alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+#alias dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 
 # Aliasing eachdir like this allows you to use aliases/functions as commands.
-alias eachdir=". eachdir"
+#alias eachdir=". eachdir"
 
 # Create a new directory and enter it
 function md() {
