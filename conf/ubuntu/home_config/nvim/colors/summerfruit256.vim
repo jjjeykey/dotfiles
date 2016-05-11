@@ -1,0 +1,1 @@
+/home/jakob/jakobwild@gmail.com/Optimierung/vim-colorshemes/summerfruit256.vim/colors/summerfruit256.vim
