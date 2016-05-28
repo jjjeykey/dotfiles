@@ -6,9 +6,6 @@ runtime bindings.vim
 runtime playground.vim
 runtime vundle.vim
 
-" doesnt work?
-nmap ,h tabe "~/.config/nvim/settings"
-
 " Things to remember
 """
 " use jump lists

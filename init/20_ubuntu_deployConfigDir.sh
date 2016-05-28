@@ -23,10 +23,10 @@ for filename in $deploy_dir/*; do
   if [[ -e $dest ]]; then
     echo "Warn: $dest exists, making backup in $backup_subdir"
     mv $dest $backup_subdir || exit;
-    echo "Recreate $dest folder"
-    mkdir -p $dest
   fi
   if [[ -d $filename ]]; then
+    echo "Recreate $dest folder"
+    mkdir -p $dest
     # if it is a directory only create links of sub folders, not folder itself
     for filename_sub in $dir/$filename/*; do
       basename_of_sub=$(basename $filename_sub)
