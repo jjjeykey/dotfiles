@@ -10,8 +10,10 @@ nn <enter> :echo 'enter'<cr>
 nn <c-s-enter> :echo 'csenter'<cr>
 
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :qa<CR>
+nnoremap <Leader>x :qa<CR>
+nnoremap <Leader>q :bd<CR>
 nnoremap <Leader>o :CtrlP<CR>
+map <leader>e :NerdTree<cr> 
 
 " accumulate selections: 
 "   V '"'a then y, then '"'A for appending, pa for paste from a
@@ -35,7 +37,7 @@ vnoremap <C-v> "0p
 
 " ______________________________________________________________________________ 
 " make a new vsp and switch to it
-nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader><leader>w <C-w>v<C-w>l
 "make separation lines, should invoke my ultisnippet
 nnoremap <leader>- 0i-- <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
 nnoremap <leader>" 0i"" <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
@@ -78,7 +80,7 @@ vnoremap <F1> <ESC>
 " Strip all trailing whitespaces
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " re-hardwrap two soft wrapped lines
-nnoremap <leader>q gqip
+nnoremap <leader><leader>q gqip
 " select text just pasted
 nnoremap <leader>v V`]`
 

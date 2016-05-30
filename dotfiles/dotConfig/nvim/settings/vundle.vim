@@ -1,8 +1,9 @@
 " Vundle
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible " be iMproved, required
+filetype off " required
 
 " set the runtime path to include Vundle and initialize
+" do git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim to install
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle')
 " alternatively, pass a path where Vundle should install plugins
@@ -31,13 +32,14 @@ let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "endif
 Plugin 'bling/vim-airline'      " new statusbar
 Plugin 'vim-airline/vim-airline-themes'
-let g:airline#extensions#tabline#enabled = 1 " enable buffer tab-like view
 let g:airline_theme = "hybrid"
+"let g:airline#extensions#tabline#enabled = 1 " enable buffer tab-like view
+Plugin 'ap/vim-buftabline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'christoomey/vim-tmux-navigator' " vim navigation in tmux
 Plugin 'vimoutliner/vimoutliner' " simple, fast authoring
 Plugin 'tpope/vim-surround.git'
-Plugin 'jiangmiao/auto-pairs.git' "auto brackets?
+"Plugin 'jiangmiao/auto-pairs.git' "auto brackets?
 Plugin 'flazz/vim-colorschemes' "color schemes
 Plugin 'chriskempson/tomorrow-theme.git' "nice light color scheme
 Plugin 'terryma/vim-multiple-cursors' "multiple line insert/yank

@@ -2,6 +2,8 @@
 # inspiration from http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 
 backupdir=~/dotfiles-backup # old dotfiles backup directory
+backupPath="" # folder with id in backup dir
+backupFile="" # folder or file inside backup path
 
 function argError() {
   echo "Use script <deploy_dir> <[home|config]>"
@@ -45,30 +47,31 @@ for fullFilename in $deploy_dir/*; do # you need to be explicit if you want to
   fi
 
   # Test if destination exists already and backup then
+  basename_of_FileToBackup=$(basename $dest)
+  backupFile=$backupPath/${basename_of_FileToBackup#.} # ${#.} is for stripping the dot in the basename
   if [[ -e $dest ]]; then
     echo "Warn: $dest exists, making backup in $backupPath"
-    basename_of_FileToBackup=$(basename $dest)
-    mv $dest $backupPath/${basename_of_FileToBackup#.} || exit; # ${#.} is for stripping the dot in the basename
+    mv $dest $backupFile || exit; 
   fi
 
   # If dotfile directory:
   if [[ -d $fullFilename ]]; then
     echo "Create $dest folder"
     mkdir -p $dest
-    # if it is a directory only create links of sub folders, not folder itself
+    # if it is a directory only create links of sub folders and files, not folder itself
     for dotSub in $fullFilename/*; do
       basename_of_sub=$(basename $dotSub)
       echo "Link $basename/$basename_of_sub to $dest"
       ln -fs $dotSub $dest
     done
+
     # non-cloud directories and files (which are not links) need to be moved to our config destination again
     echo "Restore local files from backup directory..."
-    for fileToRestore in $backupPath/* backupPath/[^.]*; do
+    for fileToRestore in $backupFile/* $backupFile/[^.]*; do
       basename_of_unremove=$(basename $fileToRestore)
       if [[ ! -L fileToRestore ]]; then # not a symbolic link
         echo "Move $basename/$basename_of_unremove to $dest"
-        mv $fileToRestore $dest || echo "Error: Failed to restore local
-        directory from backup directory"
+        cp -R $fileToRestore $dest || echo "Error: Failed to restore local directory from backup directory"
       fi
     done
   else

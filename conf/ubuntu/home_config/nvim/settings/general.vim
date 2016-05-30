@@ -1,5 +1,8 @@
 let mapleader=" "  "set Leader key to space
 
+set wildmode=longest:full,list:full "I have a file in one of these folder and I want vim to auto-complete the path just up to the first non-ambiguous match, this is a nice balance
+set scrolloff=9999 " curor pos always in the middle of the screen
+
 set textwidth=80
 set shiftwidth=4
 set softtabstop=4
@@ -156,3 +159,5 @@ set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 map <F9> :make<Return>:copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
+
+

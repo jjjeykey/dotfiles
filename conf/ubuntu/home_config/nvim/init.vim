@@ -11,6 +11,11 @@ nmap ,h tabe "~/.config/nvim/settings"
 
 " Things to remember
 """
+" use c-c to jump out of insermode
+" s-v select rows
+" = format selected code
+" gf open file under cursor (abosulte or relative path)
+" gi switches to insert mode at the location inseration took place previously
 " use jump lists
 " show them with :jumps, use ctrl-O to jump back and ctrl-I to jump forth
 " use Jump commands:
