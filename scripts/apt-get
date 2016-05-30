@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo apt-get install aptitude git
+sudo add-apt-repository ppa:webupd8team/y-ppa-manager
+sudo aptitude update && aptitude install y-ppa-manager
+
