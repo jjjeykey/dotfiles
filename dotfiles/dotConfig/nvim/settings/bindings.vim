@@ -1,3 +1,6 @@
+nnoremap <C-n> :bprev<cr>
+nnoremap <C-m> :bnext<cr>
+
 imap jj <Esc>
 "vmap jk <Esc>
 
@@ -5,12 +8,13 @@ imap jj <Esc>
 " does not work
 nmap <C-j> o<Esc>
 
-nn <s-enter> :echo 'senter'<cr>
-nn <enter> :echo 'enter'<cr>
-nn <c-s-enter> :echo 'csenter'<cr>
+"nnoremap <s-enter> :echo 'senter'<cr>
+"nnoremap <enter> :echo 'enter'<cr>
+"nnoremap <c-s-enter> :echo 'csenter'<cr>
 
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :qa<CR>
+nnoremap <Leader>q :bd<CR>
+nnoremap <Leader><leader>q :qa<CR>
 nnoremap <Leader>o :CtrlP<CR>
 
 " accumulate selections: 

@@ -30,11 +30,20 @@ let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
   "" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 "endif
-Plugin 'bling/vim-airline'      " new statusbar
+"Plugin 'zefei/vim-wintabs'
+"map <C-n> <Plug>(wintabs_previous)
+"map <C-m> <Plug>(wintabs_next)
+"map <C-T>c <Plug>(wintabs_close)
+"map <C-T>o <Plug>(wintabs_only)
+"map <C-W>c <Plug>(wintabs_close_window)
+"map <C-W>o <Plug>(wintabs_only_window)
+"command! Tabc WintabsCloseVimtab
+"command! Tabo WintabsOnlyVimtab
+Plugin 'vim-airline/vim-airline'      " new statusbar
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = "hybrid"
-"let g:airline#extensions#tabline#enabled = 1 " enable buffer tab-like view
-Plugin 'ap/vim-buftabline'
+let g:airline#extensions#tabline#enabled = 1 " enable buffer tab-like view
+"Plugin 'ap/vim-buftabline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'christoomey/vim-tmux-navigator' " vim navigation in tmux
 Plugin 'vimoutliner/vimoutliner' " simple, fast authoring
@@ -46,7 +55,7 @@ Plugin 'terryma/vim-multiple-cursors' "multiple line insert/yank
 "Plugin 'adragomir/javacomplete' " java code completition
 "alternative: AutoComplPop or Vim JDE
 
-"snipmate and all the packages that belong to it: 
+"snipmate and all the packages that belong to it:
 "Plugin 'MarcWeber/vim-addon-mw-utils'
 "Plugin 'tomtom/tlib_vim'
 "Plugin 'garbas/vim-snipmate'
@@ -72,7 +81,7 @@ Plugin 'xolox/vim-misc.git' "needed for above
 Plugin 'scrooloose/syntastic.git' " syntax checking hacks, don't see a big difference to
 " YouCompleteMe
 
-Plugin 'godlygeek/tabular.git' " make things line up 
+Plugin 'godlygeek/tabular.git' " make things line up
 
 Plugin 'majutsushi/tagbar.git'
 nmap <F8> :TagbarToggle<CR>
@@ -82,12 +91,12 @@ nmap <F8> :TagbarToggle<CR>
 "let g:yankring_replace_n_pkey = '<alt>>'
 "let g:yankring_replace_n_nkey = '<Char-174>'
 
-"Plugin 'maxbrunsfeld/vim-yankstack.git' " lightweight alternative to yankring 
+"Plugin 'maxbrunsfeld/vim-yankstack.git' " lightweight alternative to yankring
 " standard: use <meta>-p and <meta>-<shift>-p to cycle forth and back, remap:
 "nmap <leader>p <Plug>yankstack_substitute_older_paste
 "nmap <leader>P <Plug>yankstack_substitute_newer_paste
 
-Plugin 'mileszs/ack.vim.git' " 'far better than grep, optimized for programmers' 
+Plugin 'mileszs/ack.vim.git' " 'far better than grep, optimized for programmers'
 " see https://github.com/mileszs/ack.vim
 
 " increment numbers with ctrl-v ctrl-a
@@ -115,10 +124,9 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 "according ycm config for ultisnip integration: http://stackoverflow.com/questions/27390285/vim-ultisnips-not-working-with-ycm
-let g:ycm_complete_in_comments = 1 
-let g:ycm_seed_identifiers_with_syntax = 1 
+let g:ycm_complete_in_comments = 1
+let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1 
-
 "tmux navigator settings
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>

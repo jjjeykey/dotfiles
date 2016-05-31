@@ -1,1 +1,2 @@
 ack-grep
+kdesdk-dolphin-plugins # plugins (git...) for dolphin etc.
