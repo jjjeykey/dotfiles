@@ -1,3 +1,21 @@
+" map Backspace in normalmode to delete and go into insert
+nmap <BS> xa
+
+" works as well, but not so good, because Shift is not recognized
+"imap ö [
+"imap S-ö ]
+
+"" Alt-ö and ä inserts braces
+imap <a-char-246> {
+"imap <a-char-214> }
+imap <a-char-228> [
+"imap <a-char-196> ]
+
+"exe "imap <Char-196> }" | " LATIN CAPITAL A WITH DIAERESIS
+"exe "imap <Char-214> {" | " LATIN CAPITAL O WITH DIAERESIS
+"exe "imap <Char-228> ]" | " LATIN SMALL A WITH DIAERESIS
+"exe "imap <Char-246> [" | " LATIN SMALL O WITH DIAERESIS 
+
 nnoremap <C-n> :bprev<cr>
 nnoremap <C-m> :bnext<cr>
 
@@ -39,7 +57,7 @@ vnoremap <C-v> "0p
 
 " ______________________________________________________________________________ 
 " make a new vsp and switch to it
-nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader><leader>w <C-w>v<C-w>l
 "make separation lines, should invoke my ultisnippet
 nnoremap <leader>- 0i-- <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
 nnoremap <leader>" 0i"" <esc>:call UltiSnips#ExpandSnippet()<cr><esc>

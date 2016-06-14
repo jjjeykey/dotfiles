@@ -2,12 +2,13 @@ set runtimepath+=~/.config/nvim/settings
 
 runtime general.vim
 runtime functions.vim
-runtime bindings.vim
 runtime playground.vim
 runtime vundle.vim
+runtime bindings.vim
 
 " Things to remember
 """
+" [{ or ]} jump to the outer brackets
 " use jump lists
 " show them with :jumps, use ctrl-O to jump back and ctrl-I to jump forth
 " use Jump commands:

@@ -137,6 +137,9 @@ alias vi="nvim"
 alias vim="nvim"
 alias e="emacs -nm"
 
+# my files
+alias todo
+
 # Aliases for xclip:
 # http://stackoverflow.com/questions/5130968/how-can-i-copy-the-output-of-a-command-directly-into-my-clipboard
 alias "c=xclip"
@@ -146,6 +149,27 @@ alias "v=xclip -o"
 
 #   cat   with   syn   highlighting
 alias ccat='pygmentize -g -O style=colorful,linenos=1'
+
+# mkdir, cd into it
+mkcd () {
+  mkdir -p "$*"
+  cd "$*"
+}
+
+# quickly open file for editing
+choose () {
+    local PS3="Choose a file to edit: "
+    select opt in $(locate "$1") quit
+    do
+        if [[ $opt = "quit" ]]
+        then
+            break
+        fi
+        ${EDITOR:-vi} "$opt"
+    done
+  }
+
+
 
 antigen bundle colorize #cat syn highlighting (funzt nicht?)
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -165,9 +189,10 @@ bindkey '^f' vi-end-of-line # for the suggestions
 antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
 
 # if this fails remove -t option restart terminal and add it again
-if command -v tmux>/dev/null; then
-    [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec $(tmux attach -t base || tmux new -s base)
-fi
+#if command -v tmux>/dev/null; then
+    #[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec $(tmux attach -t base || tmux new -s base)
+#fi
+if [ "$TMUX" = "" ]; then tmux; fi
 
 
 ####

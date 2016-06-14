@@ -43,12 +43,15 @@ Plugin 'vim-airline/vim-airline'      " new statusbar
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = "hybrid"
 let g:airline#extensions#tabline#enabled = 1 " enable buffer tab-like view
+let g:airline#extensions#tabline#fnamemod = ':t' " show filename instead of full path
 "Plugin 'ap/vim-buftabline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'christoomey/vim-tmux-navigator' " vim navigation in tmux
 Plugin 'vimoutliner/vimoutliner' " simple, fast authoring
 Plugin 'tpope/vim-surround.git'
-"Plugin 'jiangmiao/auto-pairs.git' "auto brackets?
+Plugin 'jiangmiao/auto-pairs.git' "auto brackets?
+" may be cpu intensive?
+"Plugin 'Raimondi/delimitMate.git' " auto brackets? but not in comments etc?
 Plugin 'flazz/vim-colorschemes' "color schemes
 Plugin 'chriskempson/tomorrow-theme.git' "nice light color scheme
 Plugin 'terryma/vim-multiple-cursors' "multiple line insert/yank
@@ -101,6 +104,11 @@ Plugin 'mileszs/ack.vim.git' " 'far better than grep, optimized for programmers'
 
 " increment numbers with ctrl-v ctrl-a
 Plugin 'triglav/vim-visual-increment.git'
+
+" Latex live preview, to start execute :LLPStartPreview
+Plugin 'xuhdev/vim-latex-live-preview'
+let g:livepreview_previewer = 'okular'
+
 
 " Track the engine. ULTISNIPS
 Plugin 'SirVer/ultisnips'

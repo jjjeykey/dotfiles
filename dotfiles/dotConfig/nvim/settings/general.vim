@@ -1,5 +1,8 @@
 let mapleader=" "  "set Leader key to space
 
+set backspace=2 " make backspace work like most other apps
+set backspace=indent,eol,start
+
 set textwidth=80
 set shiftwidth=4
 set softtabstop=4
