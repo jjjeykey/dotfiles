@@ -7,12 +7,14 @@ filetype off " required
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle')
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'   " Plugin manager
+Plugin 'terryma/vim-multiple-cursors' "multiple line insert/yank
+Plugin 'tpope/vim-sleuth' " set shiftwidth and expandtab automatically
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'Valloric/YouCompleteMe' " autocompletition
+
 Plugin 'terryma/vim-expand-region' " use for a keybinding see above
 let g:ycm_confirm_extra_conf = 0
 Plugin 'Shougo/neocomplete.vim'  " autocomplete
@@ -24,11 +26,11 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'      " without the mixed you start in files mode
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "if executable('ag')
-  "" Use Ag over Grep
-  "set grepprg=ag\ --nogroup\ --nocolor
+"""" Use Ag over Grep
+"""set grepprg=ag\ --nogroup\ --nocolor
 
-  "" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"""" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"""let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 "endif
 "Plugin 'zefei/vim-wintabs'
 "map <C-n> <Plug>(wintabs_previous)
@@ -39,6 +41,7 @@ let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "map <C-W>o <Plug>(wintabs_only_window)
 "command! Tabc WintabsCloseVimtab
 "command! Tabo WintabsOnlyVimtab
+Plugin 'rodjek/vim-puppet.git'
 Plugin 'vim-airline/vim-airline'      " new statusbar
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = "hybrid"
@@ -46,6 +49,7 @@ let g:airline#extensions#tabline#enabled = 1 " enable buffer tab-like view
 let g:airline#extensions#tabline#fnamemod = ':t' " show filename instead of full path
 "Plugin 'ap/vim-buftabline'
 Plugin 'scrooloose/nerdcommenter'
+let NERDSpaceDelims=1
 Plugin 'christoomey/vim-tmux-navigator' " vim navigation in tmux
 Plugin 'vimoutliner/vimoutliner' " simple, fast authoring
 Plugin 'tpope/vim-surround.git'
@@ -54,7 +58,6 @@ Plugin 'jiangmiao/auto-pairs.git' "auto brackets?
 "Plugin 'Raimondi/delimitMate.git' " auto brackets? but not in comments etc?
 Plugin 'flazz/vim-colorschemes' "color schemes
 Plugin 'chriskempson/tomorrow-theme.git' "nice light color scheme
-Plugin 'terryma/vim-multiple-cursors' "multiple line insert/yank
 "Plugin 'adragomir/javacomplete' " java code completition
 "alternative: AutoComplPop or Vim JDE
 
@@ -82,7 +85,6 @@ Plugin 'xolox/vim-misc.git' "needed for above
 " RestartSession may come in handy too
 
 Plugin 'scrooloose/syntastic.git' " syntax checking hacks, don't see a big difference to
-" YouCompleteMe
 
 Plugin 'godlygeek/tabular.git' " make things line up
 
@@ -91,8 +93,8 @@ nmap <F8> :TagbarToggle<CR>
 
 
 "Plugin 'vim-scripts/YankRing.vim.git' " use ctrl-p to cycle between pasted, and makes a shared yank history for all open instances
-"let g:yankring_replace_n_pkey = '<alt>>'
-"let g:yankring_replace_n_nkey = '<Char-174>'
+"let g:yankring_replace_n_pkey = '<alt>-m'
+"let g:yankring_replace_n_nkey = '<alt>-n'
 
 "Plugin 'maxbrunsfeld/vim-yankstack.git' " lightweight alternative to yankring
 " standard: use <meta>-p and <meta>-<shift>-p to cycle forth and back, remap:

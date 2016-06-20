@@ -1,1 +1,0 @@
-/home/jakob/Documents/jakobwild@gmail.com/Optimierung/xmonad/xmobar.hs

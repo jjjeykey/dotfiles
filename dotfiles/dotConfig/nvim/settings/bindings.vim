@@ -1,7 +1,3 @@
-" map Backspace in normalmode to delete and go into insert
-nmap <BS> xa
-
-" works as well, but not so good, because Shift is not recognized
 "imap ö [
 "imap S-ö ]
 
@@ -16,15 +12,15 @@ imap <a-char-228> [
 "exe "imap <Char-228> ]" | " LATIN SMALL A WITH DIAERESIS
 "exe "imap <Char-246> [" | " LATIN SMALL O WITH DIAERESIS 
 
-nnoremap <C-n> :bprev<cr>
-nnoremap <C-m> :bnext<cr>
+" nnoremap <C-n> :bprev<cr>
+" nnoremap <C-m> :bnext<cr>
 
-imap jj <Esc>
+inoremap jj <Esc>
 "vmap jk <Esc>
 
 " use ctrl-j to insert newline in command mode like in insert mode
 " does not work
-nmap <C-j> o<Esc>
+nnoremap <C-j> o<Esc>
 
 "nnoremap <s-enter> :echo 'senter'<cr>
 "nnoremap <enter> :echo 'enter'<cr>
@@ -62,14 +58,24 @@ nnoremap <leader><leader>w <C-w>v<C-w>l
 nnoremap <leader>- 0i-- <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
 nnoremap <leader>" 0i"" <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
 
- 
-"make my short cuts 
-"make newline easily: conflicts with vim command history
-"nmap <S-Enter> <CR>
-"nmap <CR> o<Esc>
+
+"_____________________________________________________________________________
+" compatibility with normal programs
+nnoremap <c-a> ggvG
+
+" make my short cuts 
+" make newline easily: conflicts with vim command history
+nnoremap <CR> o<Esc>
+" maybe this resolves the conflict: nmap <S-Enter> <CR> doesnt work in vim, as enter is ^I
+" this should fix the problem
+:autocmd CmdwinEnter * nnoremap <CR> <CR>
+:autocmd BufReadPost quickfix nnoremap <CR> <CR>
+
+" map Backspace in normalmode to delete and go into insert
+nnoremap <BS> xa
 
 " Map Ctrl-Backspace to delete the previous word in insert mode, does not work?
-imap <C-BS> <C-W>
+inoremap <C-BS> <C-W>
 
 " ______________________________________________________________________________ 
 " Cucumber Tables
@@ -102,31 +108,24 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " re-hardwrap two soft wrapped lines
 nnoremap <leader>q gqip
 " select text just pasted
-nnoremap <leader>v V`]`
+"nnoremap <leader>v V`]`
 
 "" Make it easy to update/reload _vimrc.
-nmap ,s :source $HOME/.config/nvim/init.vim
-nmap ,v :vsp $HOME/.config/nvim/init.vim 
-nmap ,u :vsp $HOME/.vimrc/Bundle/vim-snippets/UltiSnips/java.snippets
+nnoremap <leader>s :source $HOME/.config/nvim/init.vim
+nnoremap <leader>v :vsp $HOME/.config/nvim/init.vim 
+"nmap ,u :vsp $HOME/.vimrc/Bundle/vim-snippets/UltiSnips/java.snippets
 
 "Eclim shortcuts
-nmap <Leader><Leader>cr :JavaCorrect
-nmap <Leader><Leader>cn :JavaCorrect
+nnoremap <Leader><Leader>cr :JavaCorrect
+nnoremap <Leader><Leader>cn :JavaCorrect
 
 "nmap <C-M> :tabnext<CR>
 "nmap <C-N> :tabprev<CR>
 
-" Key bindings for split-view navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-set sw=2
-
 "" Next / previous error with Tab / Shift+Tab.
-map <silent> <Tab> :cn<CR>
-map <silent> <S+Tab> :cp<CR>
-map <silent> <BS><Tab> :cp<CR>
+"map <silent> <Tab> :cn<CR>
+"map <silent> <S+Tab> :cp<CR>
+"map <silent> <BS><Tab> :cp<CR>
 
 "" Umlaut mappings for US keyboard.
 imap "a ä

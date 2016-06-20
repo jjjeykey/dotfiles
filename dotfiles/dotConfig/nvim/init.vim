@@ -8,6 +8,12 @@ runtime bindings.vim
 
 " Things to remember
 """
+" use tmux-prefix + z to maximize / restore previous state
+" use //e to put curor to end of a search match, or use /regex/e to do so in the
+" first place
+" t/T is the pendant to f/F, but befor the character
+" make folds with zf
+" subistiute command %s can be repeated with &
 " [{ or ]} jump to the outer brackets
 " use jump lists
 " show them with :jumps, use ctrl-O to jump back and ctrl-I to jump forth
