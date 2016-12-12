@@ -1,5 +1,11 @@
 let mapleader=" "  "set Leader key to space
 
+" cnoremap w!! w !sudo tee % >/dev/null " open a file with super user rights
+
+set cursorline
+
+set scrolloff=999  " keep cursur centered
+
 set backspace=2 " make backspace work like most other apps
 set backspace=indent,eol,start
 
@@ -15,10 +21,15 @@ set nostartofline
 set showmatch "" Show matching braces.
 set nowrap "" Do not break long lines.
 
-set timeoutlen=500 "" After this many msecs do not imap.
-set showmode "" Show the mode (insert,replace,etc.)
-set gcr=a:blinkon0 "" No blinking cursor please.
-set wmh=0 "" Do not show any line of minimized windows
+set title                " change the terminal's title
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set history=1000         " remember more commands and search history
+set undoreload=10000        " number of lines to save for undo
+set undolevels=1000      " use many muchos levels of undo
+set timeoutlen=500 " After this many msecs do not imap.
+set showmode " Show the mode (insert,replace,etc.)
+set gcr=a:blinkon0 " No blinking cursor please.
+set wmh=0 " Do not show any line of minimized windows
 
 " siehe für folgende, https://wiki.ubuntuusers.de/vim
 set autoindent
@@ -38,7 +49,6 @@ set ignorecase
 set gdefault " Make %s/A/B/g the default (g not needed anymore)
 "Open new split panes to right and bottom, which feels more natural than Vim’s
 "default: https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally
-filetype plugin indent on   " automatic file type detection for ultisnip?
 
 " Latex? (Hannah Bast)
 let g:Imap_UsePlaceHolders = 0 "" no placeholders please

@@ -1,3 +1,10 @@
+" alt m to go to normal mode
+inoremap <a-m> <Esc>
+
+nnor <leader>cf :let @+=expand("%:p")<CR>    " Mnemonic: Copy File path
+nnor <leader>yf :let @+=expand("%:p")<CR>    " Mnemonic: Yank File path
+nnor <leader>fn :let @+=expand("%")<CR>      " Mnemonic: yank File Name
+
 "imap ö [
 "imap S-ö ]
 
@@ -18,9 +25,26 @@ imap <a-char-228> [
 inoremap jj <Esc>
 "vmap jk <Esc>
 
-" use ctrl-j to insert newline in command mode like in insert mode
-" does not work
-nnoremap <C-j> o<Esc>
+" make text move around in normal, visual mode
+" left/right
+nnoremap <Left> <<
+nnoremap <Right> >>
+vnoremap <Left> <gv " gv selects last selection or sth.
+vnoremap <Right> >gv
+" inoremap <Left> <Esc><<i
+" inoremap <Right> <Esc>>>i
+" up/down - doesnt work
+nnoremap <Up> [e
+nnoremap <Down> ]e
+vnoremap <Up> [egv
+vnoremap <Down> ]egv
+" up/down alternative
+nnoremap <Down> :m .+1<CR>==
+nnoremap <Up> :m .-2<CR>==
+inoremap <Down> <Esc>:m .+1<CR>==gi
+inoremap <Up> <Esc>:m .-2<CR>==gi
+vnoremap <Down> :m '>+1<CR>gv=gv
+vnoremap <Up> :m '<-2<CR>gv=gv
 
 "nnoremap <s-enter> :echo 'senter'<cr>
 "nnoremap <enter> :echo 'enter'<cr>
@@ -30,10 +54,34 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :bd<CR>
 nnoremap <Leader><leader>q :qa<CR>
 nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>u :Unite<CR>
 
 " accumulate selections: 
 "   V '"'a then y, then '"'A for appending, pa for paste from a
 nnoremap <Leader>j \"Jyy      "append to register j
+"
+" ______________________________________________________________________________ 
+" make a new vsp and switch to it
+nnoremap <leader><leader>s <C-w>v<C-w>l " s means split
+"make separation lines, should invoke my ultisnippet
+nnoremap <leader>- 0i-- <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
+nnoremap <leader>" 0i"" <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
+
+" Strip all trailing whitespaces
+nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+" re-hardwrap two soft wrapped lines
+nnoremap <leader><leader>q gqip
+" select text just pasted
+"nnoremap <leader>v V`]`
+
+"" Make it easy to update/reload _vimrc.
+nnoremap <leader>s :source $HOME/.config/nvim/init.vim
+nnoremap <leader>v :vsp $HOME/.config/nvim/init.vim 
+"nmap ,u :vsp $HOME/.vimrc/Bundle/vim-snippets/UltiSnips/java.snippets
+
+"Eclim shortcuts
+nnoremap <Leader><Leader>cr :JavaCorrect
+nnoremap <Leader><Leader>cn :JavaCorrect
 
 " ______________________________________________________________________________ 
 " PASTING AND YANKING
@@ -41,22 +89,20 @@ nnoremap <Leader>j \"Jyy      "append to register j
 " http://stackoverflow.com/questions/2861627/paste-in-insert-mode
 " paste from *vim reg* in insert mode
 inoremap <C-v> <C-r>0
+" equivalent in visual mode: paste from non-delete buffer
+vnoremap <C-v> "0p
 "paste from clipboard in command mode
-nnoremap <leader>p o<C-r>+<esc>
+  " nnoremap <leader>p o<C-r>+<esc>
 " yank a line to clipboard when not selecting anything
 nnoremap <C-c> <S-v>"+y
 " copy/paste to *system clipboard* in visual mode
-vnoremap <C-c> "+y
-vnoremap <C-S-v> "+p
-" paste from non-delete buffer
-vnoremap <C-v> "0p
+  " vnoremap <C-c> "+y
+  " vnoremap <C-S-v> "+p
 
-" ______________________________________________________________________________ 
-" make a new vsp and switch to it
-nnoremap <leader><leader>w <C-w>v<C-w>l
-"make separation lines, should invoke my ultisnippet
-nnoremap <leader>- 0i-- <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
-nnoremap <leader>" 0i"" <esc>:call UltiSnips#ExpandSnippet()<cr><esc>
+" want to sync vim with system clipboard
+" this makes every yank appear in system clipboard
+set clipboard=unnamedplus " for windows it is unamed
+
 
 
 "_____________________________________________________________________________
@@ -103,21 +149,6 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Strip all trailing whitespaces
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" re-hardwrap two soft wrapped lines
-nnoremap <leader>q gqip
-" select text just pasted
-"nnoremap <leader>v V`]`
-
-"" Make it easy to update/reload _vimrc.
-nnoremap <leader>s :source $HOME/.config/nvim/init.vim
-nnoremap <leader>v :vsp $HOME/.config/nvim/init.vim 
-"nmap ,u :vsp $HOME/.vimrc/Bundle/vim-snippets/UltiSnips/java.snippets
-
-"Eclim shortcuts
-nnoremap <Leader><Leader>cr :JavaCorrect
-nnoremap <Leader><Leader>cn :JavaCorrect
 
 "nmap <C-M> :tabnext<CR>
 "nmap <C-N> :tabprev<CR>

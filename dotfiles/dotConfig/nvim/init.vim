@@ -1,13 +1,16 @@
 set runtimepath+=~/.config/nvim/settings
 
-runtime general.vim
-runtime functions.vim
-runtime playground.vim
-runtime vundle.vim
-runtime bindings.vim
+runtime general.vim " ~/.config/nvim/settings/general.vim
+runtime functions.vim  " ~/.config/nvim/settings/functions.vim
+runtime playground.vim " ~/.config/nvim/settings/playground.vim
+runtime vundle.vim " ~/.config/nvim/settings/vundle.vim
+runtime bindings.vim " ~/.config/nvim/settings/bindings.vim
 
-" Things to remember
-"""
+" Things to remember - old new verision in vimwiki directory 
+" ==========================================================
+" use gf to follow a file path like in my init.vim
+" use verbose map <keybinding> to show where it was assigned
+" use '. to jump to the last changed line
 " use tmux-prefix + z to maximize / restore previous state
 " use //e to put curor to end of a search match, or use /regex/e to do so in the
 " first place
@@ -81,3 +84,15 @@ runtime bindings.vim
     "<Leader>N            | Jump to latest "/" or "?" backward. See |N|.
     "<Leader>s            | Find(Search) {char} forward and backward.
                          "| See |f| and |F|.
+                         "
+ " :?foo?t.                        
+" What :m, :t and :d do is explained in their relative :help :command parts.
+" :M and :T are certainly custom commands which probably massage the manipulated lines in some way.
+" '' is the "last position before last jump" mark.
+" Because forward search and backward search are jumps, '' can be used as address for the Ex commands above:
+" place cursor on some line, we will call it "origin",
+" search for foo, a few lines below,
+" hit <CR> when you have found your target,
+" '' now corresponds to that "origin" line from before,
+" we copy the current line to just below the "origin" line with :t''
+" The command-line mode mappings I suggested to jollybobbyroger turn this two steps action into a single step action.

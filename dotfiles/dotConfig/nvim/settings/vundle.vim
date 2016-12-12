@@ -20,7 +20,6 @@ let g:ycm_confirm_extra_conf = 0
 Plugin 'Shougo/neocomplete.vim'  " autocomplete
 "source $HOME/.vim/config_neocomplete.vim
 Plugin 'scrooloose/nerdtree.git' " file browser
-Plugin 'easymotion/vim-easymotion'  " new motion with <leader><leader>w
 Plugin 'ctrlpvim/ctrlp.vim'         " search files, tags
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPMixed'      " without the mixed you start in files mode
@@ -41,7 +40,11 @@ let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 "map <C-W>o <Plug>(wintabs_only_window)
 "command! Tabc WintabsCloseVimtab
 "command! Tabo WintabsOnlyVimtab
-Plugin 'rodjek/vim-puppet.git'
+" Plugin 'easymotion/vim-easymotion'  " new motion with <leader><leader>w
+Plugin 'vimwiki/vimwiki.git' " default wiki page with <leader><leader>w
+Plugin 'Shougo/unite.vim.git'  " https://github.com/Shougo/unite.vim
+nnoremap <c-l> :Unite<CR>
+Plugin 'rodjek/vim-puppet.git' " Puppet Syntax
 Plugin 'vim-airline/vim-airline'      " new statusbar
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme = "hybrid"
@@ -66,6 +69,10 @@ Plugin 'chriskempson/tomorrow-theme.git' "nice light color scheme
 "Plugin 'tomtom/tlib_vim'
 "Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets' "optional
+
+
+Plugin 'blueyed/vim-diminactive.git' " dim inactive splits
+
 
 " Plugin 'KevinGoodsell/vim-csexact.git'
 " needed to combine ycm and ultisnips
@@ -110,10 +117,12 @@ Plugin 'triglav/vim-visual-increment.git'
 " Latex live preview, to start execute :LLPStartPreview
 Plugin 'xuhdev/vim-latex-live-preview'
 let g:livepreview_previewer = 'okular'
-
+" another latex plugin also with live preview
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 " Track the engine. ULTISNIPS
 Plugin 'SirVer/ultisnips'
+" Use c-tab to see the list of snippets
 " " Snippets are separated from the engine. Add this if you want them:
 "Plugin 'honza/vim-snippets'        " I used this but all snippets were
 "duplicated forcing the options dialog to show
@@ -163,4 +172,9 @@ nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
-syntax on
+syntax on " needs to be after vundle and before filetype
+
+" Vundle needs filetype detection off, so enable it again after vundle finished
+filetype off " only this makes next line work?
+filetype on
+filetype plugin indent on   " automatic file type detection for ultisnip?

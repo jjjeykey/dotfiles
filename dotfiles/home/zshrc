@@ -1,10 +1,23 @@
-# plugin made unnecessary:
-# use fuzzy file finder with <ctrl>-T/R or <alt>-C
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# muss oberste Zeile sein, da PATH hier überschrieben wird
+# wenn andere die nun erweitern wollen, muss das danach geschehen
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Plattformen für mobile Systeme
+source /home/jakob/public/mobile-project/mobile-project-shell-config-cochlovius.zsh
+
+# bindkey "^r" history-search-backward
+
+
+# Auto ls after cd
+# http://stackoverflow.com/questions/3964068/zsh-automatically-run-ls-after-every-cd
+# function chpwd() {
+  # emulate -L zsh
+  # ls -a
+# }
 
 # Export section
 export github_user=jjjeykey # used for dotfiles deployment github app
-export PATH="$HOME/.linuxbrew/bin:$PATH"
+export PATH=$PATH:"$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 ## Path to my zsh config
@@ -102,7 +115,6 @@ plugins=(git, compleat)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -136,9 +148,11 @@ alias :q="exit"
 alias vi="nvim"
 alias vim="nvim"
 alias e="emacs -nm"
+alias quit="exit"
 
 # my files
 alias todo
+
 
 # Aliases for xclip:
 # http://stackoverflow.com/questions/5130968/how-can-i-copy-the-output-of-a-command-directly-into-my-clipboard
@@ -176,17 +190,23 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle vi-mode
 antigen bundle tarruda/zsh-autosuggestions
 antigen bundle junegunn/fzf.git
+# the next line is now in plugins=(... fzf-zsh ...)
+antigen bundle Treri/fzf-zsh # used to make fzf work with zsh autosuggestions
+# plugin made unnecessary:
+# use fuzzy file finder with <ctrl>-T/R or <alt>-C
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # for the next one you have to read readme of fzf-zsh and then move the fzf
 # folder to the antigen repos (see error when sourcing this file)
-antigen bundle Treri/fzf-zsh # used to make fzf work with zsh autosuggestions
-autosuggest-toggle # toggle the suggestions
+# autosuggest-toggle # toggle the suggestions # deprecated???
 bindkey '^f' vi-end-of-line # for the suggestions
 #antigen bundle https://github.com/zsh-users/zsh-autosuggestions.git
 #bindkey <enter> vi-forward-blank-word
 #antigen bundle colored-man-page
 #antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
 #antigen theme spaceship #frisk #flazz #bira #amuse #af-magic #fishy
-antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+# antigen theme fishy #https://github.com/denysdovhan/spaceship-zsh-theme spaceship
+antigen theme bira
 
 # if this fails remove -t option restart terminal and add it again
 #if command -v tmux>/dev/null; then
@@ -200,7 +220,7 @@ if [ "$TMUX" = "" ]; then tmux; fi
 # to esc for one command) and space = strg (see below)
 ####
 
-#xcape -e 'Shift_L=Escape' # put this in brackets for mapping like explained above ;Control_L=Control_L|O'
+# xcape -e 'Shift_L=Escape' # put this in brackets for mapping like explained above ;Control_L=Control_L|O'
 
 # Map an unused modifier's keysym to the spacebar's keycode and make it a
 # control modifier. It needs to be an existing key so that emacs won't
